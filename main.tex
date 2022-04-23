@@ -1,0 +1,127 @@
+\author{João Gonçalves}
+\newcommand{\authorD}{Daniel Dinis}
+\newcommand{\authorM}{Martim Bento}
+\newcommand{\authorT}{Tiago Brogueira}
+\newcommand{\studentID}{99995}
+\newcommand{\studentIDD}{99906}
+\newcommand{\studentIDM}{100031}
+\newcommand{\studentIDT}{100095}
+\newcommand{\supervisorone}{Prof\textsuperscript{\underline{a}}. Célia Jesus}
+\newcommand{\supervisortwo}{}
+\newcommand{\department}{Engenharia Eletrotécnica e de Computadores}
+\newcommand{\exam}{Electrotecnia Teórica}
+
+\title{%
+4\textsuperscript{\underline{o}} Trabalho Laboratorial\\
+\large REGIMES TRANSITÓRIOS}
+\date{Abril 2022}
+
+\documentclass[a4paper,12pt]{article}
+\usepackage[left=30mm,top=30mm,right=30mm,bottom=30mm]{geometry}
+\usepackage{etoolbox}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+\usepackage{booktabs}
+\usepackage[usestackEOL]{stackengine}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{bm}
+\usepackage[export]{adjustbox}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+%\usepackage[svgnames]{xcolor}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[capitalise]{cleveref}
+\usepackage{enumitem,kantlipsum}
+\usepackage[square,numbers,sort]{natbib}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{amssymb}
+\usepackage{babel}
+\usepackage[bottom]{footmisc}
+\usemintedstyle{emacs}
+%\setlength{\parindent}{0pt}
+
+\renewcommand{\listingscaption}{Algorithm}
+\renewcommand{\listoflistingscaption}{List of Algorithms}
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Tab.}
+\renewcommand{\contentsname}{Índice}
+
+\bibliographystyle{unsrtnat}
+
+\hypersetup{
+    colorlinks,
+    linkcolor={black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\linespread{1}
+
+\newtheorem{theorem}{Theorem}[section]
+\graphicspath{{figures/}}	
+
+%----------------------------------TITLE PAGE -----------------------------------
+\makeatletter
+\def\maketitle{
+  \begin{center}\leavevmode
+       \normalfont
+       \includegraphics[width=0.55\columnwidth]{IST.pdf}
+       \vskip 1.5cm   
+       \textsc{\large \department}\\
+       \vskip 1.5cm
+       \rule{\linewidth}{0.2 mm} %\\
+       {\large \exam}\\[1 cm]
+       {\huge \bfseries \@title \par}
+       \vspace{1cm}
+	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+	 
+	\begin{minipage}[t]{0.45\textwidth}
+		\begin{flushleft} \large
+			\emph{Autores:}\\
+            \textbf{\authorD} : \studentIDD\\
+			\textbf{\@author} : \studentID\\
+            \textbf{\authorM} : \studentIDM\\
+			\textbf{\authorT} : \studentIDT
+		\end{flushleft}
+	\end{minipage}
+	\begin{minipage}[t]{0.45\textwidth}
+	   \begin{flushright} \large
+			\ifdefempty{\supervisortwo}{\emph{Supervisora:\\}}{\emph{Supervisores:\\}}
+			\supervisorone\\
+			\ifdefempty{\supervisortwo}{}{\supervisortwo\\}
+		\end{flushright}
+	\end{minipage}
+	\vfill
+	{\Large \@date\par}
+   \end{center}
+   %\vfill
+   %\null
+   \cleardoublepage
+  }
+\makeatother
+%-------------------------------- ENDTITLE PAGE ----------------------------------
+
+\pgfplotsset{compat=1.18}
+\begin{document}
+
+    %% title page
+    \pagenumbering{gobble}
+    \maketitle
+    %% body
+    \newpage
+    \pagenumbering{arabic}
+    \section*{Questões}
+    \input{sections/Q2_1}
+    \input{sections/Q2_2}
+    %% attachments
+    \newpage
+    %\input{sections/anexo}
+
+\end{document}

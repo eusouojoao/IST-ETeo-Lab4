@@ -1,0 +1,248 @@
+\clearpage
+\def\delequal{\mathrel{\ensurestackMath{\stackon[1pt]{=}{\scriptstyle\Delta}}}}
+%//==============================--@--==============================//%
+\subsection*{\underline{2.2} Circuito RLC-Série}
+%//==============================--A--==============================//%
+\subsubsection*{(a) Estabeleça a equação para a corrente ${i}$ em valores instantâneos para ${t \ge 0}$ em função do coeficiente de amortecimento ${\beta}$ e da frequência angular das oscilações não amortecidas ${\omega_0}$.
+Calcule $\omega_0$.}
+\label{subsubsec_a2}
+\paragraph{Resposta:}
+Escolhendo o caminho fechado conforme o enunciado (interruptor comutado), com o sentido coincidente com o da corrente convencionado, obtém-se, através da Lei de Indução:
+$$
+    \overrightarrow{\nabla} \times \overrightarrow{E} = -\dfrac{\partial}{\partial t}\overrightarrow{B} \implies i(t)\cdot (R' + R_G) + \frac{1}{C} \int i(t)\, dt + L \frac{di(t)}{dt} = 0
+$$
+
+Para obter a ilustre EDO linear de 2\textsuperscript{\underline{a}} ordem homogénea, é simplesmente necessário derivar em ordem a $t$, i.e.:
+$$
+    i(t)\cdot (R' + R_G) + \frac{1}{C} \int i(t)\, dt + L \frac{di(t)}{dt} = 0 \implies  L \frac{d^2i(t)}{dt^2} + \frac{di(t)}{dt}\cdot R + \frac{1}{C}\cdot i(t) = 0
+$$
+
+$$
+    \iff \frac{d^2i(t)}{dt^2} + \frac{R}{L} \cdot \frac{di(t)}{dt} + \frac{1}{CL}\cdot i(t) = 0
+$$
+
+Por comparação direta com a forma canónica $\dfrac{d^2i(t)}{dt^2} + 2\beta \cdot \dfrac{di(t)}{dt} + \omega_{0}^{2}\cdot i(t) = 0$, pode-se concluir celeremente:
+
+$$
+    \begin{cases}
+        \beta = \dfrac{R}{2L} \\
+        \omega_0 = \dfrac{1}{\sqrt{LC}} = \dfrac{\sqrt{LC}}{LC} = 50\ \text{krad s}^{-1}
+    \end{cases}
+$$
+\hfill \ensuremath{\Box}
+%\footnotetext[2]{Do enunciado temos que $R = R' + R_G$.}
+%//==============================--B--==============================//%
+\subsubsection*{(b) Estabeleça as condições iniciais para o regime que se obtém para ${t \ge 0}$. Caracterize o regime forçado para ${t \ge 0}$.}
+\label{subsubsec_b2}
+\paragraph{Resposta:}
+Caracteristicamente de sistemas reais, é de esperar que não ocorram saltos energéticos infinitos derivados de descontinuidades de $u_C(t)$ e $i_L(t)$.
+$$
+    p_C = \frac{d}{dt}W_e(t) \to \infty;\ \ \ p_L = \frac{d}{dt}W_m(t) \to \infty
+$$
+
+Esta situação é, naturalmente, fisicamente absurda, e não se pode evitar a conclusão óbvia de que $u_C(t)$ e $i_L(t)$ se verificam inalterados no instante de comutação do interruptor. Isto é:
+$$
+    u_C(0^+) = u_C(0^-);\ \ \ i_L(0^+) = i_L(0^-) 
+$$
+
+Através da Lei de Indução, salientando que se trata de um regime estacionário para $t < 0$, e que se trata de um circuito em série, concluem-se deste modo as condições iniciais:
+$$
+    \begin{cases}
+        \bar{U}_G = \bar{U}_C + \bar{U}_L \\
+        i(t) = i_L(t)
+    \end{cases}
+    \implies
+    \begin{cases}
+        u_C(0) = U_G(0) = 4\ \text{V} \\
+        i(0^+) = i(0^-) = i(0) = 0\ \text{A}
+    \end{cases}
+$$
+
+Assim, ao comutar o interruptor, para $t > 0$, estamos perante um regime livre da influência do gerador. 
+
+Como esta influência foi removida, a solução dos problemas de valor inicial deve tender para zero há medida que o tempo se alastra (existem elementos dissipativos no circuito). Pelo que, naturalmente se verifica:
+$$
+    \begin{cases}
+        %i_f(t) = \lim\limits_{t \to \infty} i(t) = 0\ \text{A}\\
+        %u_f(t) = \lim\limits_{t \to \infty} u_C(t) = 0\ \text{V}
+        i_f(t) = 0\ \text{A}\\
+        u_f(t) = 0\ \text{V}
+    \end{cases}
+$$
+\hfill \ensuremath{\Box}
+%//==============================--C--==============================//%
+\subsubsection*{(c) Discuta os tipos de solução que pode obter para o regime livre com ${R}$ variável.}
+\label{subsubsec_c2}
+\paragraph{Resposta:} 
+Desprovido da influência do gerador, o circuito apresenta somente um regime livre que já foi introduzido, i.e.:
+$$
+    \dfrac{d^2i(t)}{dt^2} + 2\beta \cdot \dfrac{di(t)}{dt} + \omega_{0}^{2}\cdot i(t) = 0
+$$
+
+Esta EDO linear de 2\textsuperscript{\underline{a}} ordem homogénea é de resolução imediata recorrendo ao seu polinómio caracteristico:
+$$
+    s^2 + 2\beta s + \omega_0^2 = 0 \implies s = -\beta \pm \sqrt{\beta^2 - \omega_0^2}
+$$
+
+Aproveitando as relações\footnotemark[2] deduzidas na alínea \hyperref[subsubsec_a2]{\underline{2.2} (a)}, imediatamente se conclúi, ao analizar o binómio discriminante, que estamos perante três possíveis cenários:
+
+\begin{itemize}
+  \item $\beta > \omega_0 \iff R > 2\sqrt{\dfrac{L}{C}}$: estamos perante um regime aperiódico fortemente amortecido e, como tal, as raízes são reais e diferentes (a solução para $i$ seriam duas exponenciais decadentes).   
+  \item $\beta = \omega_0 \iff R = 2\sqrt{\dfrac{L}{C}}$: estamos perante um regime aperiódico \textit{criticamente} amortecido (limite), neste caso temos uma raiz dupla real (a solução toma a forma de duas exponenciais decadentes em que uma é multiplicada por $t$).
+  \item $\beta < \omega_0 \iff R < 2\sqrt{\dfrac{L}{C}}$: estamos perante um regime oscilatório amortecido, visto que são encontradas duas raizes complexas conjugadas (a solução é da forma de uma sinusoide multiplicada por uma exponencial decadente).
+\end{itemize}
+\hfill \ensuremath{\Box}
+
+\footnotetext[2]{Especificamente $\beta = R/2L$, dado que estamos a realizar um \textit{gedankenexperiment} em que $R$ é uma variável.}
+%//==============================--D--==============================//%
+\subsubsection*{(d) Para ${R = 100\ \Omega}$, calcule o coeficiente de amortecimento ${\beta}$ e verifique que a solução é do tipo oscilatório amortecido. Calcule ${\omega = 2\pi/T}$ sendo ${T}$ o período de isocronismo. Verifique que: \\ $$ A_1/A_2 = A_2/A_3 = \cdots = (A_1/A_n)^{\frac{1}{n-1}} = e^{\lambda}$$ Determine $\lambda$. Determine $i(t)$ e $u_C(t)$ tendo em conta as condições iniciais estabelecidas em b).}
+\label{subsubsec_d2}
+\paragraph{Resposta:}
+Utilizando diretamente as expressões obtidas anteriormente:
+$$
+    \beta = \frac{R}{2L} = \frac{5}{2\cdot 10\cdot 10^{-3}} = 5\ \text{kNp}\ s^{-1}
+$$
+\hfill \ensuremath{\Box}
+
+Desta forma, encontramo-nos de facto num regime oscilatório amortecido. Tal afirmação verifica-se imediatamente com o discutido na alínea precedente juntamente o resultado obtido para a frequência natural na alínea \hyperref[subsubsec_a2]{\underline{2.2} (a)}, i.e.:
+$$
+    \beta < \omega_0 \iff 5\cdot 10^3 < 50\cdot 10^3 \implies [(5 < 50) \land 1] = 1 
+$$
+\hfill \ensuremath{\Box}
+
+Posto isto, e tendo em conta que o regime transitório é puramente livre, temos que $i(t)$ é da forma:
+\begin{equation}
+    \label{eq2}
+    i(t) = \mathbb{R}e\{\bar{I} e^{st} \} = Ie^{-\beta t}\cos{(\omega t + \theta)}
+\end{equation}
+
+$$
+    \begin{cases}
+        \omega = \sqrt{\omega_0^2 - \beta^2} \approx 49.749\ \text{krad s}^{-1} \\
+        s = -\beta + j\omega = \omega_0\ e^{j\delta};\ \ \ \delta = \pi - \arctan{\left(\frac{\omega}{\beta}\right)} = 1.573\ \text{rad}
+    \end{cases}
+$$
+
+Em que $\omega$ é a frequência angular das oscilações amortecidas e $\bar{I} = Ie^{j\theta}$. Assim, o período de isocronismo é facilmente deduzido:
+$$
+    \omega = \frac{2\pi}{T} \implies T = \frac{2\pi}{\omega} \approx 126.298\ \mu\text{s}
+$$
+\hfill \ensuremath{\Box}
+
+De modo a verificar a igualdade enunciada: $A_1/A_2 = \cdots = (A_1/A_n)^{1/(n-1)} = e^{\lambda}$, com $\lambda = \beta T/2$; considera-se o facto de que de $T/2$ em $T/2$, a função regida pela sinusoide encontra ora dois zeros consecutivos, ou dois extremos consecutivos. 
+
+Assim, denominando por $t_n$ o instante em que se verifica um extremo, temos:
+$$
+    t_{n+1} = t_n + \frac{T}{2} \implies
+    \begin{cases}
+        i(t_n) = Ie^{-\beta t_n}\cos{(\omega t_n + \theta)}\\
+        i(t_{n+1}) = Ie^{-\beta t_n}e^{-\beta \frac{T}{2}}\cos{(\omega t_n + \pi + \theta)}
+    \end{cases}
+$$
+
+\clearpage
+Sendo então o racio entre duas amplitudes consecutivas:
+$$
+    \left\vert \frac{i(t_{n})}{i(t_{n+1})} \right\vert = \frac{A_{n}}{A_{n+1}} = \left\vert \frac{Ie^{-\beta t_n}\cos{(\omega t_n + \theta)}}{-Ie^{-\beta t_n}e^{-\beta \frac{T}{2}}\cos{(\omega t_n + \theta)}} \right\vert
+$$
+
+$$
+    \therefore \frac{A_{n+1}}{A_{n}} = e^{\beta \frac{T}{2}} = e^{\lambda}
+$$
+
+Note-se que $t_{n+1} = t_n + T/2$ é uma progressão aritmética de razão $T/2$. Assim, temos:
+$$
+    t_{n} = t_1 + (n-1)\cdot \frac{T}{2} \implies t_1 = t_{n} + (1-n)\frac{T}{2}
+$$
+
+Então:
+$$
+    \left\vert \frac{i(t_{1})}{i(t_{n})} \right\vert = \frac{A_{1}}{A_{n}} = \left\vert \frac{Ie^{-\beta t_{n}}e^{(n-1)\beta\frac{T}{2}}\cos{(\omega t_{n} - n\pi + \pi + \theta)}}{-Ie^{-\beta t_{n}}\cos{(\omega t_{n+1} + \theta)}} \right\vert
+$$
+
+$$
+    \therefore \frac{A_{1}}{A_{n}} = e^{(n-1)\beta\frac{T}{2}} \implies \left(\frac{A_{1}}{A_{n}}\right)^{1/(n-1)} = e^{\beta\frac{T}{2}} = e^{\lambda} 
+$$
+
+Finalmente, conclúi-se:
+$$
+    \therefore \frac{A_n}{A_{n+1}} = \left(\frac{A_1}{A_n}\right)^{1/(n-1)} = e^{\lambda};\ \ \ \lambda = \beta\frac{T}{2} \approx 315.745\ \text{mNp}
+$$
+\hfill \ensuremath{\Box}
+
+Relembrando a \hyperref[eq2]{equação (3)} e as condições iniciais obtidas na alínea \hyperref[subsubsec_b2]{\underline{2.2} (b)}, encontra-se sem grande resistência o argumento $\theta$ da corrente:
+$$
+    i(t) = Ie^{-\beta t}\cos{(\omega t + \theta)} \implies i(0) = I\cos{(\theta)} = 0 \implies \theta = \frac{\pi}{2} + k\pi\text{, }\forall k \in \mathbb{Z} 
+$$
+
+Encontramo-nos perante um circuito em série, logo:
+$$
+    u_C(t) = \frac{1}{C}\int i(t)\, dt = \frac{1}{C}\int \mathbb{R}e\{\bar{I} e^{st} \}\, dt = \frac{1}{C}\mathbb{R}e\{\frac{1}{s}\bar{I} e^{st}\}
+$$
+
+$$
+    \implies u_C(t) = \frac{I}{\omega_0 C}e^{-\beta t}\cos{(\omega t + \theta - \delta)}
+$$
+
+Verifica-se que no instante de comutação do interruptor $u_C(0) = 4\ \text{V}$, e assim facilmente se obtem o valor da amplitude I. Seja $k = 0$, então:
+$$
+    u_C(0) = \frac{I}{\omega_0 C}\cos{(\theta - \delta)} \implies I = \frac{4 \cdot \omega_0 C}{\cos{(\theta - \delta)}} \approx  8.0\ \text{mA}
+$$
+
+Em suma, temos as seguintes soluções:
+$$
+    i(t) = Ie^{-\beta t}\cos{(\omega t + \theta)};\ \ \ u_C(t) = \frac{I}{\omega_0 C}e^{-\beta t}\cos{(\omega t + \theta - \delta)}
+$$
+\hfill \ensuremath{\Box}
+
+%//==============================--E--==============================//%
+\clearpage
+\subsubsection*{(e) Calcule $R_0 = R$ de modo que a solução do regime livre seja do tipo aperiódico limite. Determine $i(t)$. Determine igualmente o valor mínimo de $i\ (i_{min})$ e o instante em que ocorre $(t_{min})$.}
+\label{subsubsec_e2}
+\paragraph{Resposta:}
+Com os resultados da alínea \hyperref[subsubsec_c2]{\underline{2.2} (c)} é de imediato calcular a resistência $R_0$ que nos leva a uma solução do polinómio característico da equação diferencial com raiz dupla (isto é, um regime aperiódico limite; dado que $\beta = \omega_0$):
+$$
+    R_0 = 2\sqrt{\frac{L}{C}} = 1000\ \Omega \implies \beta = 50\ \text{kNp s}^{-1}
+$$
+
+Assim, naturalmente, a solução encontrada para $i(t)$ é nos moldes:
+\begin{equation}
+    i(t) = (I' + t I'')e^{-\beta t}    
+\end{equation}
+
+Em seguinda, calculam-se as amplitudes $I'$ e $I''$, com uso das condições iniciais discutidas anteriormente:
+$$
+    i(0) = 0 \implies I' = 0\ \text{A} \implies i(t) = t I'' e^{-\beta t} 
+$$
+
+Do mesmo modo, sabe-se que $u_C(0) = 4\ \text{V}$, e por aplicação direta da Lei de Indução, temos:
+$$
+    u_C(0) = 4 \implies -R_0 i(0) - L \frac{di(0)}{dt} = 4 \iff \frac{di(0)}{dt} = -400\ \text{A}
+$$
+
+$$
+    \frac{di(t)}{dt} = -I''(\beta t - 1)e^{-\beta t} \implies \frac{di(0)}{dt} = -400 \iff I'' = -400\ \text{A}
+$$
+
+De justa forma, obtem-se a expressão final para $i(t)$ no regime aperiódico limite:
+$$
+    \therefore i(t) = -400t e^{-\beta t}\text{, com }\beta = 50\ \text{kNp s}^{-1}
+$$
+\hfill \ensuremath{\Box}
+
+Logicamente, visto que $i(t)$ é uma função \textit{estritamente} decrescente até ao seu valor mínimo e que após passar este ponto tende para zero (não obstante dado o regime livre), obtemos trivialmente o seu valor mínimo através do zero da sua 1\textsuperscript{\underline{a}} derivada.
+
+Como nos lembra a Análise real:
+$$
+    \frac{di(t)}{dt} = -I''(\beta t - 1)e^{-\beta t} = 0 \iff t = \frac{1}{\beta} = \frac{2L}{R_0} = 20\ \mu\text{s}
+$$
+
+Então, por fim:
+$$
+    \begin{cases}
+        t_{\text{min}} = 20\ \mu\text{s}\\
+        i_{\text{min}} = i(t_{\text{min}}) = \dfrac{-1}{125e} \approx -2.943\ \text{mA}
+    \end{cases}
+$$
+\hfill \ensuremath{\Box}
+%//==============================--@--==============================//%
